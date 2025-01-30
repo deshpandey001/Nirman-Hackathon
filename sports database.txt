@@ -1,0 +1,220 @@
+ MySQL  localhost:3306 ssl  sports  SQL > create table student_details(prn int primary key,name varchar(100),email varchar(100) unique,favourite_sport varchar(50));
+Query OK, 0 rows affected (0.0949 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > CREATE TABLE Equipment(equipment_id int primary key auto_increment, name varchar(100),sport varchar(100),total_units int,available_units int);
+Query OK, 0 rows affected (0.0312 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > CREATE TABLE Bookings(booking_id int primary key auto_increment,prn int,equipment_id,booking_time datetime,status enum('booked','cancelled'),foreign key(prn) references student_details(prn) on delete cascade,foreign key(equipment_id) references Equipment(equipment_id) on delete cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',booking_time datetime,status enum('booked','cancelled'),foreign key(prn) refere' at line 1
+ MySQL  localhost:3306 ssl  sports  SQL > CREATE TABLE Bookings(booking_id int primary key auto_increment,prn int,equipment_id int,booking_time datetime,status enum('booked','cancelled'),foreign key(prn) references student_details(prn) on delete cascade,foreign key(equipment_id) references Equipment(equipment_id) on delete cascade);
+Query OK, 0 rows affected (0.0637 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > insert into student_details values(22310386,'Varad Deshpande',varad@example.com','Table Tennis');
+                                       '> ^C
+ MySQL  localhost:3306 ssl  sports  SQL >  insert into student_details values(22310386,'Varad Deshpande',varad@example.com','Table Tennis');
+                                       '> ^C
+ MySQL  localhost:3306 ssl  sports  SQL > insert into student_details values(22310386,'Varad Deshpande','varad@example.com','Table Tennis');
+Query OK, 1 row affected (0.0346 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > insert into student_details values(22310387, 'Amit Sharma', 'amit@example.com', 'Badminton'),
+                                       -> (22310388, 'Priya Patel', 'priya@example.com', 'Cricket'),
+                                       -> (22310389, 'Rohan Mehta', 'rohan@example.com', 'Football'),
+                                       -> (22310390, 'Sneha Kulkarni', 'sneha@example.com', 'Basketball'),
+                                       -> (22310391, 'Akash Verma', 'akash@example.com', 'Volleyball'),
+                                       -> (22310392, 'Neha Gupta', 'neha@example.com', 'Table Tennis'),
+                                       -> (22310393, 'Vikas Yadav', 'vikas@example.com', 'Tennis'),
+                                       -> (22310394, 'Ananya Rao', 'ananya@example.com', 'Badminton'),
+                                       -> (22310395, 'Siddharth Singh', 'siddharth@example.com', 'Football'),
+                                       -> (22310396, 'Pooja Sharma', 'pooja@example.com', 'Cricket'),
+                                       -> (22310397, 'Karan Malhotra', 'karan@example.com', 'Basketball'),
+                                       -> (22310398, 'Megha Iyer', 'megha@example.com', 'Tennis'),
+                                       -> (22310399, 'Rajesh Nair', 'rajesh@example.com', 'Table Tennis'),
+                                       -> (22310400, 'Simran Kaur', 'simran@example.com', 'Badminton'),
+                                       -> (22310401, 'Manoj Das', 'manoj@example.com', 'Volleyball'),
+                                       -> (22310402, 'Divya Bhatt', 'divya@example.com', 'Football'),
+                                       -> (22310403, 'Nitin Sharma', 'nitin@example.com', 'Cricket'),
+                                       -> (22310404, 'Ritika Jain', 'ritika@example.com', 'Basketball'),
+                                       -> (22310405, 'Suresh Menon', 'suresh@example.com', 'Tennis'),
+                                       -> (22310406, 'Alok Pandey', 'alok@example.com', 'Table Tennis'),
+                                       -> (22310407, 'Shruti Desai', 'shruti@example.com', 'Badminton'),
+                                       -> (22310408, 'Vishal Reddy', 'vishal@example.com', 'Volleyball'),
+                                       -> (22310409, 'Komal Choudhary', 'komal@example.com', 'Football'),
+                                       -> (22310410, 'Harish Kumar', 'harish@example.com', 'Cricket');
+Query OK, 24 rows affected (0.0086 sec)
+
+Records: 24  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  sports  SQL > show student_details;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student_details' at line 1
+ MySQL  localhost:3306 ssl  sports  SQL > select * from student_details;
++----------+-----------------+-----------------------+-----------------+
+| prn      | name            | email                 | favourite_sport |
++----------+-----------------+-----------------------+-----------------+
+| 22310386 | Varad Deshpande | varad@example.com     | Table Tennis    |
+| 22310387 | Amit Sharma     | amit@example.com      | Badminton       |
+| 22310388 | Priya Patel     | priya@example.com     | Cricket         |
+| 22310389 | Rohan Mehta     | rohan@example.com     | Football        |
+| 22310390 | Sneha Kulkarni  | sneha@example.com     | Basketball      |
+| 22310391 | Akash Verma     | akash@example.com     | Volleyball      |
+| 22310392 | Neha Gupta      | neha@example.com      | Table Tennis    |
+| 22310393 | Vikas Yadav     | vikas@example.com     | Tennis          |
+| 22310394 | Ananya Rao      | ananya@example.com    | Badminton       |
+| 22310395 | Siddharth Singh | siddharth@example.com | Football        |
+| 22310396 | Pooja Sharma    | pooja@example.com     | Cricket         |
+| 22310397 | Karan Malhotra  | karan@example.com     | Basketball      |
+| 22310398 | Megha Iyer      | megha@example.com     | Tennis          |
+| 22310399 | Rajesh Nair     | rajesh@example.com    | Table Tennis    |
+| 22310400 | Simran Kaur     | simran@example.com    | Badminton       |
+| 22310401 | Manoj Das       | manoj@example.com     | Volleyball      |
+| 22310402 | Divya Bhatt     | divya@example.com     | Football        |
+| 22310403 | Nitin Sharma    | nitin@example.com     | Cricket         |
+| 22310404 | Ritika Jain     | ritika@example.com    | Basketball      |
+| 22310405 | Suresh Menon    | suresh@example.com    | Tennis          |
+| 22310406 | Alok Pandey     | alok@example.com      | Table Tennis    |
+| 22310407 | Shruti Desai    | shruti@example.com    | Badminton       |
+| 22310408 | Vishal Reddy    | vishal@example.com    | Volleyball      |
+| 22310409 | Komal Choudhary | komal@example.com     | Football        |
+| 22310410 | Harish Kumar    | harish@example.com    | Cricket         |
++----------+-----------------+-----------------------+-----------------+
+25 rows in set (0.0073 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > insert into Equipment values(1,'Table Tennis Racket','Table Tennis',5,3);
+Query OK, 1 row affected (0.0080 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > insert into Equipment values(2, 'Table Tennis Table', 'Table Tennis', 2, 1),
+                                       -> (3, 'Badminton Racket', 'Badminton', 6, 4),
+                                       -> (4, 'Badminton Shuttlecock', 'Badminton', 20, 15),
+                                       -> (5, 'Cricket Bat', 'Cricket', 4, 2),
+                                       -> (6, 'Cricket Ball', 'Cricket', 10, 7),
+                                       -> (7, 'Football', 'Football', 5, 3),
+
+                                       -> (8, 'Basketball', 'Basketball', 6, 5),
+                                       -> (9, 'Volleyball', 'Volleyball', 4, 2),
+                                       -> (10, 'Tennis Racket', 'Tennis', 5, 4),
+                                       -> (11, 'Tennis Ball', 'Tennis', 15, 10),
+                                       -> (12, 'Hockey Stick', 'Hockey', 6, 3),
+                                       -> (13, 'Hockey Ball', 'Hockey', 10, 7),
+                                       -> (14, 'Carrom Board', 'Carrom', 3, 2),
+                                       -> (15, 'Carrom Coins Set', 'Carrom', 5, 3),
+                                       -> (16, 'Chess Board', 'Chess', 4, 3),
+                                       -> (17, 'Chess Pieces Set', 'Chess', 5, 4),
+                                       -> (18, 'Skipping Rope', 'Fitness', 8, 6),
+                                       -> (19, 'Dumbbells Set (5kg)', 'Fitness', 6, 4),
+                                       -> (20, 'Dumbbells Set (10kg)', 'Fitness', 6, 5),
+                                       -> (21, 'Table Tennis Net', 'Table Tennis', 3, 2),
+                                       -> (22, 'Shuttlecock Tube', 'Badminton', 10, 6),
+                                       -> (23, 'Football Goal Net', 'Football', 2, 2),
+                                       -> (24, 'Basketball Hoop', 'Basketball', 2, 2),
+                                       -> (25, 'Volleyball Net', 'Volleyball', 2, 1);
+Query OK, 24 rows affected (0.0070 sec)
+
+Records: 24  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  sports  SQL > insert into Bookings values(001,22310386,1,'2025-02-01 10:00:00','booked');
+Query OK, 1 row affected (0.0132 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > insert into Bookings values(002, 22310387, 3, '2025-02-01 10:30:00', 'booked'),
+                                       -> (003, 22310388, 5, '2025-02-01 11:00:00', 'canceled'),
+                                       -> (004, 22310389, 7, '2025-02-01 11:30:00', 'booked'),
+                                       -> (005, 22310390, 8, '2025-02-01 12:00:00', 'canceled'),
+                                       -> (006, 22310391, 9, '2025-02-01 12:30:00', 'booked'),
+                                       -> (007, 22310392, 10, '2025-02-01 13:00:00', 'canceled'),
+                                       -> (008, 22310393, 11, '2025-02-01 13:30:00', 'booked'),
+                                       -> (009, 22310394, 12, '2025-02-01 14:00:00', 'canceled'),
+                                       -> (010, 22310395, 13, '2025-02-01 14:30:00', 'booked'),
+                                       -> (011, 22310396, 14, '2025-02-01 15:00:00', 'canceled'),
+                                       -> (012, 22310397, 15, '2025-02-01 15:30:00', 'booked'),
+                                       -> (013, 22310398, 16, '2025-02-01 16:00:00', 'canceled'),
+                                       -> (014, 22310399, 17, '2025-02-01 16:30:00', 'booked'),
+                                       -> (015, 22310400, 18, '2025-02-01 17:00:00', 'canceled'),
+                                       -> (016, 22310401, 19, '2025-02-01 17:30:00', 'booked'),
+                                       -> (017, 22310402, 20, '2025-02-01 18:00:00', 'canceled'),
+                                       -> (018, 22310403, 21, '2025-02-01 18:30:00', 'booked'),
+                                       -> (019, 22310404, 22, '2025-02-01 19:00:00', 'canceled'),
+                                       -> (020, 22310405, 23, '2025-02-01 19:30:00', 'booked'),
+                                       -> (021, 22310406, 24, '2025-02-01 20:00:00', 'canceled'),
+                                       -> (022, 22310407, 25, '2025-02-01 20:30:00', 'booked'),
+                                       -> (023, 22310408, 1, '2025-02-01 21:00:00', 'canceled'),
+                                       -> (024, 22310409, 3, '2025-02-01 21:30:00', 'booked'),
+                                       -> (025, 22310410, 5, '2025-02-01 22:00:00', 'canceled');
+ERROR: 1265 (01000): Data truncated for column 'status' at row 2
+ MySQL  localhost:3306 ssl  sports  SQL > insert into Bookings values(002, 22310387, 3, '2025-02-01 10:30:00', 'booked'),
+                                       -> (003, 22310388, 5, '2025-02-01 11:00:00', 'cancelled'),
+                                       -> (004, 22310389, 7, '2025-02-01 11:30:00', 'booked'),
+                                       -> (005, 22310390, 8, '2025-02-01 12:00:00', 'cancelled'),
+                                       -> (006, 22310391, 9, '2025-02-01 12:30:00', 'booked'),
+                                       -> (007, 22310392, 10, '2025-02-01 13:00:00', 'cancelled'),
+                                       -> (008, 22310393, 11, '2025-02-01 13:30:00', 'booked'),
+                                       -> (009, 22310394, 12, '2025-02-01 14:00:00', 'cancelled'),
+                                       -> (010, 22310395, 13, '2025-02-01 14:30:00', 'booked'),
+                                       -> (011, 22310396, 14, '2025-02-01 15:00:00', 'cancelled'),
+                                       -> (012, 22310397, 15, '2025-02-01 15:30:00', 'booked'),
+                                       -> (013, 22310398, 16, '2025-02-01 16:00:00', 'cancelled'),
+                                       -> (014, 22310399, 17, '2025-02-01 16:30:00', 'booked'),
+                                       -> (015, 22310400, 18, '2025-02-01 17:00:00', 'cancelled'),
+                                       -> (016, 22310401, 19, '2025-02-01 17:30:00', 'booked'),
+                                       -> (017, 22310402, 20, '2025-02-01 18:00:00', 'cancelled'),
+                                       -> (018, 22310403, 21, '2025-02-01 18:30:00', 'booked'),
+                                       -> (019, 22310404, 22, '2025-02-01 19:00:00', 'cancelled'),
+                                       -> (020, 22310405, 23, '2025-02-01 19:30:00', 'booked'),
+                                       -> (021, 22310406, 24, '2025-02-01 20:00:00', 'cancelled'),
+                                       -> (022, 22310407, 25, '2025-02-01 20:30:00', 'booked'),
+                                       -> (023, 22310408, 1, '2025-02-01 21:00:00', 'cancelled'),
+                                       -> (024, 22310409, 3, '2025-02-01 21:30:00', 'booked'),
+                                       -> (025, 22310410, 5, '2025-02-01 22:00:00', 'cancelled');
+Query OK, 24 rows affected (0.0082 sec)
+
+Records: 24  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  sports  SQL > select * from Bookings;
++------------+----------+--------------+---------------------+-----------+
+| booking_id | prn      | equipment_id | booking_time        | status    |
++------------+----------+--------------+---------------------+-----------+
+|          1 | 22310386 |            1 | 2025-02-01 10:00:00 | booked    |
+|          2 | 22310387 |            3 | 2025-02-01 10:30:00 | booked    |
+|          3 | 22310388 |            5 | 2025-02-01 11:00:00 | cancelled |
+|          4 | 22310389 |            7 | 2025-02-01 11:30:00 | booked    |
+|          5 | 22310390 |            8 | 2025-02-01 12:00:00 | cancelled |
+|          6 | 22310391 |            9 | 2025-02-01 12:30:00 | booked    |
+|          7 | 22310392 |           10 | 2025-02-01 13:00:00 | cancelled |
+|          8 | 22310393 |           11 | 2025-02-01 13:30:00 | booked    |
+|          9 | 22310394 |           12 | 2025-02-01 14:00:00 | cancelled |
+|         10 | 22310395 |           13 | 2025-02-01 14:30:00 | booked    |
+|         11 | 22310396 |           14 | 2025-02-01 15:00:00 | cancelled |
+|         12 | 22310397 |           15 | 2025-02-01 15:30:00 | booked    |
+|         13 | 22310398 |           16 | 2025-02-01 16:00:00 | cancelled |
+|         14 | 22310399 |           17 | 2025-02-01 16:30:00 | booked    |
+|         15 | 22310400 |           18 | 2025-02-01 17:00:00 | cancelled |
+|         16 | 22310401 |           19 | 2025-02-01 17:30:00 | booked    |
+|         17 | 22310402 |           20 | 2025-02-01 18:00:00 | cancelled |
+|         18 | 22310403 |           21 | 2025-02-01 18:30:00 | booked    |
+|         19 | 22310404 |           22 | 2025-02-01 19:00:00 | cancelled |
+|         20 | 22310405 |           23 | 2025-02-01 19:30:00 | booked    |
+|         21 | 22310406 |           24 | 2025-02-01 20:00:00 | cancelled |
+|         22 | 22310407 |           25 | 2025-02-01 20:30:00 | booked    |
+|         23 | 22310408 |            1 | 2025-02-01 21:00:00 | cancelled |
+|         24 | 22310409 |            3 | 2025-02-01 21:30:00 | booked    |
+|         25 | 22310410 |            5 | 2025-02-01 22:00:00 | cancelled |
++------------+----------+--------------+---------------------+-----------+
+25 rows in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  sports  SQL > select * from Equipment;
++--------------+-----------------------+--------------+-------------+-----------------+
+| equipment_id | name                  | sport        | total_units | available_units |
++--------------+-----------------------+--------------+-------------+-----------------+
+|            1 | Table Tennis Racket   | Table Tennis |           5 |               3 |
+|            2 | Table Tennis Table    | Table Tennis |           2 |               1 |
+|            3 | Badminton Racket      | Badminton    |           6 |               4 |
+|            4 | Badminton Shuttlecock | Badminton    |          20 |              15 |
+|            5 | Cricket Bat           | Cricket      |           4 |               2 |
+|            6 | Cricket Ball          | Cricket      |          10 |               7 |
+|            7 | Football              | Football     |           5 |               3 |
+|            8 | Basketball            | Basketball   |           6 |               5 |
+|            9 | Volleyball            | Volleyball   |           4 |               2 |
+|           10 | Tennis Racket         | Tennis       |           5 |               4 |
+|           11 | Tennis Ball           | Tennis       |          15 |              10 |
+|           12 | Hockey Stick          | Hockey       |           6 |               3 |
+|           13 | Hockey Ball           | Hockey       |          10 |               7 |
+|           14 | Carrom Board          | Carrom       |           3 |               2 |
+|           15 | Carrom Coins Set      | Carrom       |           5 |               3 |
+|           16 | Chess Board           | Chess        |           4 |               3 |
+|           17 | Chess Pieces Set      | Chess        |           5 |               4 |
+|           18 | Skipping Rope         | Fitness      |           8 |               6 |
+|           19 | Dumbbells Set (5kg)   | Fitness      |           6 |               4 |
+|           20 | Dumbbells Set (10kg)  | Fitness      |           6 |               5 |
+|           21 | Table Tennis Net      | Table Tennis |           3 |               2 |
+|           22 | Shuttlecock Tube      | Badminton    |          10 |               6 |
+|           23 | Football Goal Net     | Football     |           2 |               2 |
+|           24 | Basketball Hoop       | Basketball   |           2 |               2 |
+|           25 | Volleyball Net        | Volleyball   |           2 |               1 |
++--------------+-----------------------+--------------+-------------+-----------------+
+25 rows in set (0.0009 sec)
